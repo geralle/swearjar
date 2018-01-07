@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>{{count}}</h1>
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <form class="swear-form" action="/upswear/{{id}}?_method=PUT" method="post">
+              <input type="Hidden" name="date" value="{{shortDate}}">
+              <input type="Hidden" name="count" value="{{count}}">
+              <button type="submit" class="swear-button">
+                <img src="./swear.png" alt="swear-emoji">
+              </button>
+            </form>
+          </div>
+          <div class="back">
+            <form class="good-form" action="/downswear/{{id}}?_method=PUT" method="post">
+                <input type="Hidden" name="date" value="{{shortDate}}">
+                <input type="Hidden" name="count" value="{{count}}">
+                <button type="submit" class="good-button">
+                  <img src="./good.png" alt="good-emoji">
+                </button>
+            </form>
+            <form class="" action="/deedDesc" method="post">
+              <input type="Hidden" name="date" value="{{shortDate}}">
+              <input type="Hidden" name="count" value="{{count}}">
+              <input type="text" name="description" placeholder="Good Deed Description">
+              <button class="btn btn-info" type="submit">Add Deed</button>
+            </form>
+            <h3>Todays Good Deeds</h3>
+            <div class="deeds-container">
+              {{#each goodData}}
+                <div class="deeds">
+                  <p>{{this.description}}</p>
+                  <form class="" action="/deletedeed/{{this.id}}?_method=DELETE" method="post">
+                    <input type="Hidden" name="id" value="{{this.id}}">
+                    <button type="submit" class="btn btn-info deed-button">X</button>
+                  </form>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" name="button" class="good-deed-button btn btn-primary">Good Deed</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="./script.js" charset="utf-8"></script>
+  </body>
+</html>

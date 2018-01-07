@@ -1,0 +1,21 @@
+{
+  "name": "swearjar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "hbs": "^4.0.1",
+    "knex": "^0.14.2",
+    "method-override": "^2.3.10",
+    "pg": "^7.4.0"
+  }
+}
