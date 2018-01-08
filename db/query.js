@@ -5,7 +5,6 @@ function getSwears(date){
 }
 
 function newSwears(date){
-  let fullDate = new Date()
   return db('swears').insert({
     date: date,
     count: 0
