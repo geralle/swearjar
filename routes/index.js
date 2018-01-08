@@ -6,25 +6,13 @@ const queries = require('../db/query')
 
 router.get('/', (req, res) =>{
   var date = queries.checkDate()
+  console.log(date);
   queries.getSwears(date)
   .then(function(swearData){
     if(swearData === undefined){
       queries.newSwears(date)
       .then(function(){
-        queries.getSwears(date)
-        .then(function(newSwearData){
-          queries.getGoodDeeds(date)
-          .then(function(goodData){
-            res.render('index',{
-              title: 'Swear Jar',
-              pageheader: 'Swear Jar',
-              count: newSwearData.count,
-              id: newSwearData.id,
-              shortDate: newSwearData.date,
-              goodData
-            })
-          })
-        })
+        res.redirect('/')
       })
     }else{
       queries.getGoodDeeds(date)
