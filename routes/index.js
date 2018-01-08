@@ -6,7 +6,6 @@ const queries = require('../db/query')
 
 router.get('/', (req, res) =>{
   var date = queries.checkDate()
-  console.log(date);
   queries.getSwears(date)
   .then(function(swearData){
     if(swearData === undefined){
